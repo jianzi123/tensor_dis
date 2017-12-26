@@ -76,7 +76,8 @@ def run(server, cluster_spec):  # pylint: disable=too-many-statements, too-many-
       for r in results:
         result = sess.run(r)
         logging.info("Result: %s", result)
-        summary_writer.add_summary(result, i++)
+        summary_writer.add_summary(result, i)
+        i += 1
 
 
 def main():
