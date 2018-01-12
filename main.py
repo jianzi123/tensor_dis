@@ -71,10 +71,11 @@ def run(server, cluster_spec):  # pylint: disable=too-many-statements, too-many-
     with tf.Session(
             target, config=tf.ConfigProto(log_device_placement=True)) as sess:
       sess.run(init_op)
+      writer = tf.summary.FileWriter('/tmp/tensorflow', sess.graph)
       for r in results:
         result = sess.run(r)
         logging.info("Result: %s", result)
-
+      writer.close()
 
 def main():
   """Run training.
